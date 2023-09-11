@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #header {
+            height: 100px;
+            background-color: #EEEBE9;
+        }
+
+        #nav {
+            height: 100px;
+            background-color: #B9AAA5;
+        }
+
+        #main {
+            height: 780px;
+            background-color: #886F65;
+        }
+
+        #footer {
+            height: 100px;
+            background-color: #4E342E;
+        }
+
+        .container {
+            width: 1200px;
+            height: inherit;
+            background-color: rgba(0, 0, 0, 0.2);
+            margin: 0 auto;
+        }
+
+        .contents {
+            display: grid;
+            grid-template-areas:
+                "cont1 cont1"
+                "cont2 cont2"
+                "cont3 cont4"
+            ;
+            grid-template-columns: 50% 50%;
+            grid-template-rows: 100px 200px 480px;
+        }
+
+        .contents .cont1 {
+            background-color: #74574A;
+            grid-area: cont1;
+        }
+
+        .contents .cont2 {
+            background-color: #684D43;
+            grid-area: cont1;
+        }
+
+        .contents .cont3 {
+            background-color: #594139;
+            grid-area: cont1;
+        }
+
+        .contents .cont4 {
+            background-color: #4A352F;
+            grid-area: cont1;
+        }
+
+        @media (max-width:1220px) {
+            .container {
+                width: 90%;
+            }
+
+            .contents {
+                grid-template-areas:
+                    "cont1 cont2 cont2"
+                    "cont1 cont3 cont24"
+                ;
+                grid-template-columns: (3, 1fr);
+                grid-template-rows: (2, 1fr);
+            }
+        }
+
+        @media (max-width:768px) {
+            .container {
+                width: 100%;
+            }
+
+            .contents {
+                grid-template-areas:
+                    "cont1 cont2"
+                    "cont1 cont3"
+                    "cont1 cont4"
+                ;
+                grid-template-columns: 30% 70%;
+                grid-template-rows: (3, 1fr);
+            }
+        }
+
+        @media (max-width:600px) {
+            .contents {
+                grid-template-areas:
+                    "cont1"
+                    "cont2"
+                    "cont3"
+                    "cont4"
+                ;
+                grid-template-columns: 100%;
+                grid-template-rows: 150px 210px 210px 210px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+            <div class="container"></div>
+        </header>
+        <nav id="nav">
+            <div class="container"></div>
+        </nav>
+        <main id="main">
+            <div class="container contents">
+                <article class="cont1"></article>
+                <article class="cont2"></article>
+                <article class="cont3"></article>
+                <article class="cont4"></article>
+            </div>
+        </main>
+        <footer id="footer">
+            <div class="container"></div>
+        </footer>
+    </div>
+</body>
+<script>
+    //for
+    {
+        const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+        for (let i = 1; i < arr.length; i++) {
+            document.write(arr[i]);
+        }
+        document.write("<br>")
+
+        arr.forEach((el) => {
+            document.write(el, ", ");
+        })
+        document.write("<br>")
+
+        for (let el of arr) {
+            document.write(el, ", ")
+        }
+        document.write("<br>")
+
+        for (let el in arr) {
+            document.write(arr[el], ", ")
+        }
+        document.write("<br>")
+
+        arr.map((el) => {
+            document.write(el, ", ");
+        })
+        document.write("<br>")
+
+        arr.filter((el) => {
+            document.write(el, ", ");
+        })
+        document.write("<br>")
+
+    }
+    // 함수
+    {
+        function func1() {
+            document.write("함수가 실행되었습니다.")
+        }
+        func1();
+
+        const func2 = function () {
+            document.write("함수가 실행되었습니다.")
+        }
+        func2();
+
+        function func3(str) {
+            document.write(str);
+        }
+        func3("함수가 실행되었습니다.");
+
+        function func4() {
+            return "함수가 실행되었습니다";
+        }
+        document.write(func4());
+
+        function func5(str) {
+            return str;
+        }
+        document.write(func4("함수가 실행되었습니다"));
+
+
+        const func5 = (str) => {
+            return str;
+        }
+        document.write(func4("함수가 실행되었습니다"));
+
+    }
+
+    {
+        let sum = 0;
+        for (let i = 1; i <= 100; i++) {
+            sum = + i;
+        }
+        console.log(sum)
+    }
+    {
+        let table = "<table class='table'>";
+        let num = 1;
+        for (let i = 1; i <= 10; i++) {
+            table += "<tr>";
+            for (let j = 1; j <= 10; j++) {
+                table += "<td>" + num + "</td>";
+                num++;
+            }
+            table += "</tr>";
+        }
+        table += "</table>";
+        document.write(table);
+    }
+    {
+        let table = "<table class='table'>";
+        let num =1;
+        for(let i=1; i<= 10; i++){
+            table +="<tr>";
+            for(let j=1; j<=10; j++){
+                table += "<td>" + num + "<td>"; 
+                num++;
+            }
+            table +="</tr>";
+        }
+        table +="</table>";
+        document.write(table);
+    }
+</script>
+
+</html>

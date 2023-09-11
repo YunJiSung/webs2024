@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // 01. 선언적함수
+    {
+        function func(){
+            document.write("함수가 실행되었습니다.1<br>");
+        }
+        func();
+    }
+    // 02. 익명 함수
+    {
+        const func = function(){
+            document.write("함수가 실행되었습니다.2<br>");
+        }
+        func();
+    }
+    // 03. 매개변수 함수
+    {
+        function func(x){
+            document.write(x);
+        }
+        func("함수가 실행되었습니다.3<br>");
+    }
+    // 04. 리턴값(결과/종료)함수
+    {
+        function func(){
+            const x = "함수가 실행되었습니다.4<br>";
+            return x ;
+        }
+        document.write(func());
+    }
+    // 05. 매개변수 함수 + 리턴값 함수
+    {
+        function func(x){
+            return x ;
+        }
+        document.write(func("함수가 실행되었습니다.5<br>"));
+    }
+    // 06. 화살표 함수(선언적함수)
+    {
+        func = () => {
+            document.write("함수가 실행되었습니다.6<br>");
+        }
+        func();
+    }
+    // 07. 화살표 함수(익명 함수)
+    {
+        const func = () => {
+            document.write("함수가 실행되었습니다.7<br>");
+        }
+        func();
+    }
+    // 08. 화살표 함수(매개변수 함수)
+    {
+        func = (x) => {
+            document.write(x);
+        }
+        func("함수가 실행되었습니다.8<br>"); 
+    }
+    // 09. 화살표 함수(리턴값 함수)
+    {
+        func = () => {
+            const x = "함수가 실행되었습니다.9<br>";
+            return x ;
+        }
+        document.write(func());
+    }
+    // 10. 화살표 함수(익명 함수 + 매개변수 함수 + 리턴값 함수)
+    {
+        const func = (x) => {
+            return x ;
+        }
+        document.write(func("함수가 실행되었습니다.10-1<br>"));
+
+        //매개변수 함수가 한개일때 괄호 생략
+        const func2 = x => {
+            return x ;
+        }
+        document.write(func2("함수가 실행되었습니다.10-2<br>"));
+
+        //리턴값 생략
+        const func3 = x => x ;
+        document.write(func3("함수가 실행되었습니다.10-3<br>"));
+
+        //선언적 함수(가동성 x)
+        func4 = x => x ;
+        document.write(func4("함수가 실행되었습니다.10-4<br>"));
+
+    }
+   
+
+</script>
+</body>
+</html>
