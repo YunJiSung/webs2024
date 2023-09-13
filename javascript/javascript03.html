@@ -628,18 +628,18 @@
                             <h3>18. 함수 유형 : 프로토타입 함수 </h3>
                             <p>프로토타입 함수(Prototype Function)는 JavaScript에서 객체 지향 프로그래밍 (OOP) 개념 중 하나로, 객체의 프로토타입(prototype)에 함수를 추가하여 모든 해당 객체 유형의 인스턴스가 해당 함수를 공유할 수 있도록 하는 방법입니다.</p>
 <pre><code class="language-js">{           
-    function Func(num,str){
+    function Func(num, str){
         this.num = num
         this.str = str
-        this.result = () =>{
-            console.log(`${this.num}. ${this.str}`);
-        }
     }
-    // 인스턴스 생성 
-    const info1 = new Func(19, "함수가 실행되었습니다.");
-    const info2 = new Func(20, "함수가 실행되었습니다.");
 
-    // 호출
+    Func.prototype.result = function(){
+        console.log(`${this.num}. ${this.str}`);
+    }
+
+    const info1 = new Func(21, "함수가 실행되었습니다.")
+    const info2 = new Func(22, "함수가 실행되었습니다.")
+
     info1.result();
     info2.result();
 }

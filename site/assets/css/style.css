@@ -1,4 +1,4 @@
-/* header */
+/* _______________________header____________________________ */
 .header__inner {
     display: flex;
     justify-content: space-between;
@@ -91,6 +91,7 @@
 }
 
 /* slider */
+/* _______________________slider____________________________ */
 .slider__inner {
     background-color: #a994ff;
     width: 100%;
@@ -199,4 +200,38 @@
     .slider__inner > .slider {
         background-size: 340px;
     }
+}
+
+/* _______________________intro____________________________ */
+.intro__inner {
+    padding: 100px 0;
+    background-color: #61ceab;
+}
+.intro__inner .container {
+    display: flex;
+    justify-content: space-between;
+}
+.intro__img {
+    width: 60%;
+    background-color: #ccc;
+}
+.intro__text {
+    width: 33%;
+    background-color: #989898;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    padding: 60px 0;
+}
+.intro__text h3 {
+    font-size: 53px;
+    line-height: 1.3;
+    margin-bottom: 50px;
+}
+.intro__text h3 em {
+    font-weight: 800;
+}
+.intro__text p {
+    font-size: 18px;
+    line-height: 1.5;
 }
