@@ -80,7 +80,84 @@
             </div>
             <!-- //main__menu -->
             <div class="main__sample">
-               
+                <div id="sample01" class="sample">
+                    <h3>21.array.prototype.join()</h3>
+                    <p>Array.prototype.join() 메서드는 배열의 각 요소를 문자열로 변환하고, 이 문자열들을 지정한 구분자(separator)로 구분하여 결합합니다. 구분자를 지정하지 않으면 기본적으로 쉼표가 사용됩니다.</p>
+<pre><code class="language-js">{
+    const fruits = ["apple", "banana", "cherry"];
+    const joinedString = fruits.join(", "); // 구분자로 쉼표와 공백 사용
+
+    console.log(joinedString); // "apple, banana, cherry"
+}
+</code></pre>
+                    <p class="desc">
+                        위의 예제에서 fruits.join(", ")은 배열 fruits 내의 요소를 문자열로 변환하고, 쉼표와 공백(", ")으로 구분하여 결합합니다.<br>
+                         결과적으로 "apple, banana, cherry"라는 문자열이 반환됩니다.
+                    </p>
+                    <div class="result">
+                        <details>
+                            <summary>결과 확인하기</summary>
+                            <div>
+                                "apple, banana, cherry"<br>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <!-- //sample01 -->
+
+                <div id="sample02" class="sample">
+                    <h3>22.array.prototype.pop()</h3>
+                    <p>Array.prototype.pop() 메서드는 배열에서 마지막 요소를 제거하고 그 값을 반환합니다. 따라서 배열의 길이가 하나 감소하고, 마지막 요소는 삭제됩니다.</p>
+<pre><code class="language-js">{
+    const fruits = ["apple", "banana", "cherry"];
+    const removedFruit = fruits.pop();
+    
+    console.log(removedFruit); // "cherry"
+    console.log(fruits); // ["apple", "banana"]    
+}
+</code></pre>
+                    <p class="desc">
+                        위의 예제에서 fruits.join(", ")은 배열 fruits 내의 요소를 문자열로 변환하고, 쉼표와 공백(", ")으로 구분하여 결합합니다.<br>
+                         결과적으로 "apple, banana, cherry"라는 문자열이 반환됩니다.
+                    </p>
+                    <div class="result">
+                        <details>
+                            <summary>결과 확인하기</summary>
+                            <div>
+                                ["apple", "banana"]<br>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <!-- //sample02 -->
+
+                <div id="sample03" class="sample">
+                    <h3>23.array.prototype.push()</h3>
+                    <p>Array.prototype.push() 메서드는 하나 이상의 요소를 배열의 끝에 추가하고, 배열의 새로운 길이를 반환합니다.</p>
+<pre><code class="language-js">{
+    const fruits = ["apple", "banana"];
+    const newLength = fruits.push("cherry", "date");
+    
+    console.log(newLength); // 4 (새로운 배열의 길이)
+    console.log(fruits); // ["apple", "banana", "cherry", "date"]      
+}
+</code></pre>
+                    <p class="desc">
+                        위의 예제에서 fruits.push("cherry", "date")는 배열 fruits의 끝에 "cherry"와 "date" 두 개의 요소를 추가합니다.<br>
+                        이 때, 새로운 배열의 길이는 4가 되며, 배열 fruits는 ["apple", "banana", "cherry", "date"]로 변경됩니다.<br>
+                        push() 메서드는 배열에 요소를 추가하는 데 유용하며, 주로 배열에 새로운 항목을 추가하거나 스택(stack) 자료구조의 구현에서 사용됩니다.<br>
+                        추가된 요소는 배열의 끝에 순서대로 저장됩니다. push() 메서드는 배열의 길이를 반환하므로 추가된 요소의 개수를 알 수 있습니다.
+                    </p>
+                    <div class="result">
+                        <details>
+                            <summary>결과 확인하기</summary>
+                            <div>
+                                ["apple", "banana", "cherry", "date"]<br>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <!-- //sample02 -->
             </div>  
         </main>
         <!-- //main -->
