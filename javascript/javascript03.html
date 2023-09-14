@@ -688,18 +688,26 @@
 }
 </code></pre>
                             <p class="desc">
-                                1.function Func(num, str) { ... }: Func라는 객체 생성자 함수를 정의합니다. 이 함수는 두 개의 매개변수 num과 str을 받아들이며, 이 두 값을 객체의 속성으로 설정하고, result라는 메서드를 객체에 추가합니다. 이 메서드는 객체 내의 num과 str을 사용하여 문자열을 생성하고 콘솔에 출력합니다.<br>
-                                2.const info1 = new Func(19, "함수가 실행되었습니다.");: Func 생성자 함수를 사용하여 info1이라는 객체 인스턴스를 생성합니다. 생성자 함수에 전달된 인자 19와 "함수가 실행되었습니다."는 num과 str 속성에 각각 설정됩니다.<br>
-                                3.const info2 = new Func(20, "함수가 실행되었습니다.");: 비슷하게 Func 생성자 함수를 사용하여 info2라는 객체 인스턴스를 생성합니다. 이 때, num은 20이고 str은 같은 문자열인 "함수가 실행되었습니다."로 설정됩니다.<br>
-                                4.info1.result();: info1 객체의 result 메서드를 호출합니다. 이 메서드는 this.num과 this.str을 이용하여 문자열을 생성하고, 결과를 콘솔에 출력합니다. <br>
-                                5.info2.result();: 이번에는 info2 객체의 result 메서드를 호출합니다. 마찬가지로 this.num과 this.str을 이용하여 문자열을 생성하고, 결과를 콘솔에 출력합니다. <br>
+                                1.Func 함수 정의:<br>
+                                2.Func 함수는 두 개의 인자(num과 str)를 받습니다.<br>
+                                3.함수 내에서 this.num과 this.str 프로퍼티에 해당 인자 값을 할당합니다.<br>
+                                4.Func 프로토타입 설정:<br>
+                                5.Func.prototype을 사용하여 result1과 result2라는 두 개의 메서드를 정의합니다. <br>
+                                6.result1 및 result2 메서드는 현재 객체의 num 및 str 속성 값을 출력하는 간단한 함수입니다. <br>
+                                7.두 개의 객체 생성: <br>
+                                8.info1과 info2는 Func 생성자 함수를 사용하여 생성된 객체입니다. <br>
+                                9.info1은 23과 "함수가 실행되었습니다."라는 값을 가지고 있습니다. <br>
+                                10.info2는 24와 "함수가 실행되었습니다."라는 값을 가지고 있습니다. <br>
+                                11.객체 메서드 호출: <br>
+                                12.info1.result1()을 호출하면 info1 객체의 result1 메서드가 실행되어 "23. 함수가 실행되었습니다."를 출력합니다. <br>
+                                13.info2.result2()를 호출하면 info2 객체의 result2 메서드가 실행되어 "24. 함수가 실행되었습니다."를 출력합니다.<br>
                             </p>
                             <div class="result">
                                 <details>
                                     <summary>결과 확인하기</summary>
                                     <div>
-                                        19. 함수가 실행되었습니다<br>
-                                        20. 함수가 실행되었습니다<br>
+                                        23. 함수가 실행되었습니다<br>
+                                        24. 함수가 실행되었습니다<br>
                                     </div>
                                 </details>
                             </div>
