@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>퀴즈 에펙트123</title>
+    <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
+
+
+    <style>
+        /* 바디 스타일 */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 120vh;
+            background-image: url(../quiz/assets/img/bg06.png); /* 배경 이미지 파일의 경로를 지정하세요. */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            position: relative; /* 상대적 위치 설정 */
+            font-family: "GmarketSans";
+        }
+        #main {
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 700px;
+            width: 80%; /* 원하는 가로 너비로 조정하세요. */
+            
+        }
+        .quiz__wrap {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+.quiz__wrap > .quiz {
+    width: 500px;
+    min-height: 400px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
+    margin: 73px;
+}
+.quiz__wrap > .quiz.good {
+    position: relative;
+}
+.quiz__wrap > .quiz.good::before {
+    content: '';
+    width: 100px;
+    height: 100px;
+    border: 10px solid red;
+    border-radius: 50%;
+    position: absolute;
+    left: 20px; 
+    top: 20px;
+    z-index: 100;
+}
+.quiz__wrap > .quiz.bad {
+    position: relative;
+}
+.quiz__wrap > .quiz.bad::before {
+    content: '';
+    width: 150px;
+    height: 10px;
+    background-color: red;
+    position: absolute;
+    left: 0;
+    top: 80px;
+    border-radius: 30px;
+    transform: rotate(45deg);
+    z-index: 100;
+}
+.quiz__wrap > .quiz.bad::after {
+    content: '';
+    width: 150px;
+    height: 10px;
+    background-color: red;
+    position: absolute;
+    left: 0;
+    top: 80px;
+    border-radius: 30px;
+    transform: rotate(-45deg);
+    z-index: 100;
+}
+.quiz__header {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+.quiz__question {
+    margin-bottom: 10px;
+    line-height: 1.5;
+    font-size: 30px;
+}
+.quiz__question em {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+}
+.quiz__question span {
+    font-size: 24px;
+    line-height: 1.5;
+    font-weight: 400;
+}
+.quiz__choice {
+    margin-bottom: 20px;
+}
+.quiz__choice {
+    margin-bottom: 20px;
+}
+.quiz__choice label {
+    display: block;
+    width: 100%;
+}
+.quiz__choice label input {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+}
+
+.quiz__choice label span {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 1px solid #eee;
+    padding: 17px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 400;
+    cursor: pointer;
+}
+.quiz__choice label:hover {
+    border-color: #412E91;
+    color: #412E91;
+    box-shadow: 1px 1px 5px #73689c;
+}
+.quiz__choice label span::before {
+    content: '';
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: inset 0 0 0 4px #412e91;
+    margin-right: 15px;
+    transition: all 0.3s;
+}
+.quiz__choice label input:checked + span::before {
+    box-shadow: inset 0 0 0 9px #412e91;
+}
+.quiz__choice label input:checked + span {
+    border-color: #412E91;
+    color: #412E91;
+    box-shadow: 1px 1px 5px #422e9160;
+    background-color: #e9e4ff60;
+}
+.quiz__confirm {
+    background-color: #412E91;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    display: block;
+    border: 0;
+    width: 100%;
+    transition: all 0.3s;
+    border: 1px dashed transparent;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}
+.quiz__confirm:hover {
+    border: 1px dashed #412e91;
+    background-color: transparent;
+    color: #412E91;
+    cursor: pointer;
+}
+.quiz__next {
+    width: 100%;
+    border: 1px dashed #412E91;
+    padding: 15px 20px;
+    background-color: #fff;
+    cursor: pointer;
+    color: #412E91;
+    transition: all 0.3s;
+}
+.quiz__next:hover {
+    background-color: #f5f2ff;
+}
+.quiz__answer {
+    background-color: #ede9ff;
+    border: 1px solid #b8a8ff;
+    padding: 20px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+    text-align: center;
+    color: #666;
+}
+.quiz__answer::before {
+    content: "😀정답 : ";
+}
+.quiz__desc {
+    border: 1px solid #eaeaea;
+    padding: 20px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+    color: #666;
+}
+.quiz__desc::before {
+    content: "😄설명 : ";
+}
+.quiz__answer,
+.quiz__desc {
+    display: none;
+}
+.quiz__choice .choice.correct {
+    position: relative;
+    border-color: #412E91;
+    background-color: #e9e4ff60;
+    color: #412E91;
+    padding-right: 57px;
+}
+.quiz__choice .choice.correct::after {
+    content: '';
+    width: 14px;
+    height: 14px;
+    border: 6px solid #412E91;
+    border-radius: 50%;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+
+}
+.quiz__choice .choice.incorrect {
+    position: relative;
+    border-color: #912e3a;
+    box-shadow: 1px 1px 5px #912e3a19;
+    background-color: #912e3a19;
+    color: #912e3a;
+    padding-right: 57px;
+}
+.quiz__choice .choice.incorrect::before {
+    content: '';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 6px;
+    background-color: #912e3a;
+    border-radius: 4px;
+    transform: rotate(45deg);
+    margin-top: -3px;
+
+}
+.quiz__choice .choice.incorrect::after {
+    content: '';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 6px;
+    background-color: #912e3a;
+    border-radius: 4px;
+    transform: rotate(-45deg);
+    margin-top: -3px;
+}
+
+        
+ 
+
+        
+    </style>
+</head>
+<body>
+   
+</body>
+</head>
+
+
+<body>
+
+    <header id="header">
+        <h1>
+            
+        </h1>
+        <nav>
+
+        </nav>
+    </header>
+    <!-- //header -->
+
+    <main id="main">
+        
+        <div class="quiz__wrap">
+            <div class="quiz">
+                <div class="quiz__header"></div>
+            </div>
+        </div>
+        <div class="quiz__question"></div>
+
+    </main>
+    <!-- //main -->
+    <footer id="footer">
+        
+    </footer>
+    <!-- //footer -->
+
+    <script>
+        // 선택자
+        const quizWrap = document.querySelector(".quiz__wrap");
+
+         // 문제 정보
+         const quizInfo = [
+            {
+                infoDate : "",
+                infoType : "사자성어",
+                infoQuestion : "일석이조(一石二鳥)의 뜻은?",
+                infoChoice : ["동시에 두 가지 이득을 봄","간사한 꾀를 써서 남을 속임","두 마음을 하나로 합쳐 한마음이 됨"],
+                infoAnswer : "1",
+                infoDesc : "동시에 두 가지 이득을 봄"
+            },
+            {
+                infoDate : "",
+                infoType : "알듯말듯 우리 속담",
+                infoQuestion : "ㅇㅇㅇ는 더워야 오고 ㅇㅇㅇ는 추워야 온다",
+                infoChoice : ["여름비-봄비","여름비-가을비","여름비-겨울비"],
+                infoAnswer : "2",
+                infoDesc : "여름에는 날이 무더워야 비가 오고 가을에는 쌀쌀해야 비가 온다는 말"
+            },
+            {
+                infoDate : "",
+                infoType : "사자성어",
+                infoQuestion : "일석이조(一石二鳥)의 뜻은?",
+                infoChoice : ["동시에 두 가지 이득을 봄","간사한 꾀를 써서 남을 속임","두 마음을 하나로 합쳐 한마음이 됨"],
+                infoAnswer : "1",
+                infoDesc : "동시에 두 가지 이득을 봄"
+            },
+       
+        ];
+
+        let currentIndex = 0;   // 현재 문제 변수 값
+
+        // 문제 출력
+        const updataQuiz = (index) => {
+            let quizWrapTag = `
+                <div class="quiz">
+                    <div class="quiz__header">${quizInfo[index].infoDate} ${quizInfo[index].infoType}</div>
+                    <div class="quiz__main">
+                        <div class="quiz__question">
+                            ${index+1}. ${quizInfo[index].infoQuestion}
+                        </div>
+                        <div class="quiz__choice">
+                            <label for="choice1">
+                                <input type="radio" id="choice1" name="choice" value="1">
+                                <span>${quizInfo[index].infoChoice[0]}</span>
+                            </label>
+                            <label for="choice2">
+                                <input type="radio" id="choice2" name="choice" value="2">
+                                <span>${quizInfo[index].infoChoice[1]}</span>
+                            </label>
+                            <label for="choice3">
+                                <input type="radio" id="choice3" name="choice" value="3">
+                                <span>${quizInfo[index].infoChoice[2]}</span>
+                            </label>
+                        </div>
+                        <div class="quiz__answer none">${quizInfo[index].infoAnswer}</div>
+                        <div class="quiz__desc none">${quizInfo[index].infoDesc}</div>
+                    </div>
+                    <div class="quiz__footer">
+                        <button class="quiz__confirm">정답 확인하기</button>
+                        <button class="quiz__next none">다음 문제</button>
+                    </div>
+                </div>
+            `;
+
+            quizWrap.innerHTML = quizWrapTag;
+
+            // 선택자
+            const quizConfirm = quizWrap.querySelector(".quiz__confirm");
+            const quizNext = quizWrap.querySelector(".quiz__next");
+
+            // 정답 확인 버튼
+            quizConfirm.addEventListener("click", () =>{
+                checkAnswer();
+                quizConfirm.classList.add("none");  // 정답 버튼 삭제
+                quizNext.classList.remove("none");  // 다음 버튼 추가
+            });
+
+            // 다음 문제 버튼
+            quizNext.addEventListener("click", () => {
+                if(currentIndex < quizInfo.length -1){
+                    quizNext.classList.add("none");         // 다음 버튼 삭제
+                    quizConfirm.classList.remove("none");   // 정답 버튼 추가
+                    currentIndex++;                         // 문제 번호 추가
+                    updataQuiz(currentIndex);               //퀴즈 반영
+                } else {
+                    alert("퀴즈가 종료되었습니다.");
+                }
+                
+            });
+        }
+
+
+        // 정답 확인
+       // 정답 확인
+// 정답 확인
+const checkAnswer = () => {
+                    const selectedChoice = quizWrap.querySelector("input[name='choice']:checked");
+                    if(!selectedChoice){
+                        alert("답을 선택해주세요");
+                    };
+                    const userAnswer = selectedChoice.value;                    // 사용자가 클릭한 정답
+                    const corrcetAnswer = quizInfo[currentIndex].infoAnswer;   //정답지의 정답
+                    const quizElement = quizWrap.querySelector(".quiz");
+                    const descElement = quizWrap.querySelector(".quiz__desc");
+                    const answerElement = quizWrap.querySelector(".quiz__answer");
+                    if(userAnswer === corrcetAnswer){
+                        quizElement.classList.add("good");
+                        descElement.classList.remove("none");
+                    } else {
+                        quizElement.classList.add("bad");
+                        answerElement.classList.remove("none");
+                        descElement.classList.remove("none");
+                    }
+                    descElement.classList.remove("none");
+                };
+         
+
+
+        // 페이지가 로드된 후 실행
+        document.addEventListener("DOMContentLoaded", () => {
+            updataQuiz(currentIndex);
+        });
+    </script>
+</body>
+
+</html>

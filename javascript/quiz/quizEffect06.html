@@ -30,27 +30,10 @@
     <!-- //header -->
 
     <main id="main">
-        <div class="quiz__wrap">
-            <!-- <div class="quiz">
-                <div class="quiz__header"></div>
-                <div class="quiz__main">
-                    <div class="quiz__question"></div>
-                    <div class="quiz__img"></div>
-                    <div class="quiz__choice">
-                        <div id="choice1" class="choice"></div>
-                        <div id="choice2" class="choice"></div>
-                        <div id="choice3" class="choice"></div>
-                        <div id="choice4" class="choice"></div>
-                    </div>
-                    <div class="quiz__answer"></div>
-                    <div class="quiz__desc"></div>
-                </div>    
-                    <div class="quiz__footer">
-                        <div class="quiz__indicator"></div>
-                        <button class="quiz__next">다음 문제</button>
-                    </div>
-                </div>
-            </div> -->
+        
+            <div class="quiz__wrap"></div>
+            <div class="quiz__check">정답 확인</div>
+
         </div>
     </main>
     <!-- //main -->
@@ -62,6 +45,7 @@
     <script>
         // 선택자
         const quizWrap = document.querySelector(".quiz__wrap")
+        const quizCheck = document.querySelector(".quiz__check")
 
         // 변수 설정
         let currentIndex = 0;   // 현재 문제
@@ -78,9 +62,20 @@
                         infoType: item.subject,
                         infoQuestion: item.question,
                         infoDesc: item.desc,
-                        infoChoice: [item.incorrect_answers[0],item.incorrect_answers[1],item.incorrect_answers[2]]
+                        infoAnswer: item.answer
                     }
 
+                    //보기 가져오기
+                    const choices = [...item.incorrect_answers, item.correct_answer];
+
+                    // 보기 랜덤 섞기
+                    for (let i = choices.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [choices[i], choices[j]] = [choices[j], choices[i]];
+                    }
+
+
+                    formattedQuiz.infoChoices = choices;
                     return formattedQuiz;
                 });
 
@@ -93,38 +88,34 @@
         const updataQuiz = () => {
             const quizArray = [];
 
-            quizInfo.forEach((quiz, nember) => {
+            quizInfo.forEach((quiz, number) => {
                 quizArray.push(`
                 <div class="quiz">
                     <div class="quiz__header">${quiz.infoDate} ${quiz.infoType}</div>
                     <div class="quiz__main">
                         <div class="quiz__question">
-                            ${nember+1}. ${quiz.infoQuestion}
+                            ${number+1}. ${quiz.infoQuestion}
                         </div>
                         <div class="quiz__choice">
-                            <label for="choice1">
-                                <input type="radio" id="choice1" name="choice" value="1">
-                                <span>${quiz.infoChoice[0]}</span>
+                            <label for="choice1-${number}">
+                                <input type="radio" id="choice1-${number}" name="choice-${number}" value="1">
+                                <span>${quiz.infoChoices[0]}</span>
                             </label>
-                            <label for="choice2">
-                                <input type="radio" id="choice2" name="choice" value="2">
-                                <span>${quiz.infoChoice[1]}</span>
+                            <label for="choice2-${number}">
+                                <input type="radio" id="choice2-${number}" name="choice-${number}" value="2">
+                                <span>${quiz.infoChoices[1]}</span>
                             </label>
-                            <label for="choice3">
-                                <input type="radio" id="choice3" name="choice" value="3">
-                                <span>${quiz.infoChoice[2]}</span>
+                            <label for="choice3-${number}">
+                                <input type="radio" id="choice3-${number}" name="choice-${number}" value="3">
+                                <span>${quiz.infoChoices[2]}</span>
                             </label>
-                            <label for="choice4">
-                                <input type="radio" id="choice4" name="choice" value="4">
-                                <span>${quiz.infoChoice[3]}</span>
+                            <label for="choice4-${number}">
+                                <input type="radio" id="choice4-${number}" name="choice-${number}" value="4">
+                                <span>${quiz.infoChoices[3]}</span>
                             </label>
                         </div>
-                        <div class="quiz__answer "></div>
-                        <div class="quiz__desc ">${quiz.infoDate}</div>
-                    </div>
-                    <div class="quiz__footer">
-                        <button class="quiz__confirm">정답 확인하기</button>
-                        <button class="quiz__next none">다음 문제</button>
+                        <div class="quiz__answer none">${quiz.infoAnswer}</div>
+                        <div class="quiz__desc none">${quiz.infoDate}</div>
                     </div>
                 </div>
                 `);
@@ -135,6 +126,16 @@
 
 
         fetchQuiz();
+
+        // 정답 확인
+        quizCheck.addEventListener("click", () => {
+
+        })
+
+        // 페이지가 로드된 후 실행
+        document.addEventListener("DOMContentLoaded", () => {
+            fetchQuiz();
+        })
     </script>
 </body>
 
