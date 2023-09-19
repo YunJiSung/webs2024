@@ -1,0 +1,38 @@
+@font-face {
+    font-family: 'UtoHarBang';
+    font-weight: normal;
+    font-style: normal;
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/utoHarbang/UtoHarBang.eot');
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/utoHarbang/UtoHarBang.eot?#iefix') format('embedded-opentype'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/utoHarbang/UtoHarBang.woff2') format('woff2'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/utoHarbang/UtoHarBang.woff') format('woff'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/utoHarbang/UtoHarBang.ttf') format("truetype");
+    font-display: swap;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'UtoHarBang';
+}
+
+body {
+    background-image: url(../img/bg06.png);
+    height: 1400px;
+    background-repeat: no-repeat;
+}
+
+
+#main {
+    min-height: 85vh;
+}
+
+.quiz__wrap {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+
+
