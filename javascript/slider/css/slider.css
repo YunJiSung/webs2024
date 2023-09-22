@@ -4,12 +4,13 @@
     box-sizing: border-box;
     font-family: "NexonLv1Gothic";
 }
-pre code.hljs {
+pre.code.hljs {
     margin-bottom: 0 !important;
 }
+
 body {
     width: 100%;
-    height: 100vh;
+    height: 100vh; 
 }
 body.img01 {
     background: #000 url(../img/bg01.jpg) no-repeat center / cover;
@@ -47,19 +48,20 @@ body::after {
     left: 0;
     top: 0;
     width: 100%;
-    height: 100%;
-    background-color: rgba(23,20,88,0.486);
+    height: 100vh;
+    background-color: rgba(23, 20, 88, 0.486);
     z-index: -1;
 }
 img {
     width: 100%;
     height: 100%;
-    vertical-align: top;  /* 이미지 여백 제거 */
+    vertical-align: top;    /* 이미지 여백 제거 */
 }
 a {
     color: #fff;
     text-decoration: none;
 }
+
 /* scroll */
 ::-webkit-scrollbar {
     width: 10px;
@@ -72,6 +74,7 @@ a {
     background: rgba(69, 71, 100, 0.321);
     border-radius: 20px;
 }
+
 /* header */
 #header {
     position: absolute;
@@ -84,7 +87,7 @@ a {
     display: inline-block;
     font-weight: 300;
     margin-bottom: 10px;
-    border-block-start: 1px dashed #fff;
+    border-bottom: 1px dashed #fff;
 }
 #header p {
     margin-bottom: 10px;
@@ -104,9 +107,11 @@ a {
 }
 #header li.active a {
     background-color: #fff;
-    color: #33377D;
+    color: #33377d;
 }
-/*modal__wrap */
+
+
+/* modal__wrap */
 .modal__btn {
     color: #fff;
     border: 1px solid #fff;
@@ -130,18 +135,17 @@ a {
     align-items: center;
     justify-content: center;
     z-index: 1000;
-    /* transform: scale(0); */
+    transform: scale(0);
 }
 .modal__box {
     width: 70%;
-    
     border-radius: 10px;
     background-color: #ccc;
-    /* transform: scale(0); */
+    transform: scale(0);
 }
 .modal__box .title {
     padding: 1rem;
-    background-color: #1B1C2E;
+    background-color: #1b1c2e;
     display: flex;
     align-items: center;
     color: #fff;
@@ -152,38 +156,39 @@ a {
 .modal__box .title .dot {
     width: 15px;
     height: 15px;
-    background-color: #3B3D63;
+    background-color: #3b3d63;
     display: inline-block;
     border-radius: 50%;
     position: relative;
     margin-left: 2rem;
 }
 .modal__box .title .dot::before {
-    content:'';
+    content: '';
     position: absolute;
     left: 25px;
     top: 0;
     width: 15px;
     height: 15px;
-    background-color: #3B3D63;
+    background-color: #3b3d63;
     border-radius: 50%;
 }
 .modal__box .title .dot::after {
-    content:'';
+    content: '';
     position: absolute;
     right: 25px;
     top: 0;
     width: 15px;
     height: 15px;
-    background-color: #3B3D63;
+    background-color: #3b3d63;
     border-radius: 50%;
 }
+
 .modal__box .title .tabs {
     display: flex;
     margin-left: 50px;
 }
 .modal__box .title .tabs > div {
-    color: #7A7D9D;
+    color: #7a7d9d;
     background-color: #282936;
     padding: 0.35rem 0.8rem 0.25rem 0.8rem;
     margin-right: 0.5rem;
@@ -194,24 +199,24 @@ a {
     cursor: pointer;
 }
 .modal__box .title .tabs > div.active {
-    background-color: #1F224A;
+    background-color: #1f224a;
 }
 .modal__box .title .tabs > div em {
-    font-style:normal;
+    font-style: normal;
 }
-.modal__box .title .tabs > div.favicon {
+.modal__box .title .tabs > div .favicon {
     margin-right: 0.4rem;
     margin-top: 0.2rem;
 }
-.modal__box .title .tabs > div.close {
+.modal__box .title .tabs > div .close {
     margin-left: 3rem;
     margin-top: 0.2rem;
 }
 .modal__box .cont {
     background-color: #282936;
+    overflow-y: auto;
     height: auto;
     max-height: 80vh;
-    overflow-y: auto;
     box-sizing: border-box;
     border-bottom-left-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
@@ -222,22 +227,23 @@ a {
 .modal__box .cont > div.active {
     display: block;
     height: 100%;
-    
 }
+
 .modal__close {
     position: absolute;
     right: 20px;
     top: 20px;
-    background-color:#ffff;
+    background-color: #fff;
     padding: 1rem 1rem 0.8rem 1rem;
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s;
-    /* opacity: 0; */
+    opacity: 0;
 }
 .modal__close:hover {
-    background-color: #B9BDFF;
+    background-color: #6a6a86;
 }
+
 @media (max-width: 1100px){
     .modal__box .title {
         overflow: hidden;
@@ -264,6 +270,7 @@ a {
         width: 96%;
     }
 }
+
 /* 모달 애니메이션 */
 .modal__cont.show {
     animation: foldOut 1s ease forwards;
@@ -274,6 +281,7 @@ a {
 .modal__cont.show .modal__close {
     animation: opacityOut 0.5s 1.5s ease forwards;
 }
+
 .modal__cont.show.hide {
     animation: foldIn 0.3s 0.5s ease backwards;
 }
@@ -283,6 +291,7 @@ a {
 .modal__cont.show.hide .modal__close {
     animation: opacityIn 0.5s ease forwards;
 }
+
 @keyframes foldOut {
     0%   {transform: scaleX(0.0001) scaleY(0);}
     50%  {transform: scaleX(0.0001) scaleY(1);}
