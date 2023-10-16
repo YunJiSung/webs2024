@@ -48,7 +48,7 @@
     --secondary-color-tint: #fffcdf;
     --secondary-color-dark: #f5d79d;
     --accent-color: #ff6a6a;
-    --background: var(--primary-color-tint);
+    --background: #198bd4f7;
     --circle-sizing: 18rem;
     --circle-rotate: 0deg;
 }

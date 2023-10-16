@@ -65,6 +65,8 @@
                     <li><a href="#sample19">19. 객체 : 데이터 불러오기 : for in()</a></li>
                     <li><a href="#sample20">20. 객체 : 데이터 불러오기 : 객체 펼침 연산자</a></li>
                     <li><a href="#sample21">21. 객체 : 데이터 불러오기 : 객체 구조 분해 할당</a></li> 
+                    <li><a href="#sample22">22. 파일 : 서버 데이터 불러오기 : XMLHttpRequest</a></li> 
+                    <li><a href="#sample23">23. 파일 : 서버 데이터 불러오기 : fetch API</a></li> 
                 </ul>
             </div>
         
@@ -986,6 +988,102 @@
                     </div>
                 </div>
                 <!-- //sample21 -->
+
+                <div id="sample22" class="sample">
+                    <h3> 22. 객체 : 데이터 불러오기 : 객체 펼침 연산자</h3>
+                    <p> 이 코드는 JavaScript에서 객체 해체(Destructuring)를 사용하여 객체의 속성을 추출하고, 그 값을 변수에 할당하는 예제를 보여줍니다.</p>
+<pre><code class="language-js">{
+// 22
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://webstoryboy.github.io/webs2024/json/gineungsaJC2011_05.json", true);
+    
+    xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                    var responseData = xhr.responseText;
+                    var jsonData = JSON.parse(responseData);
+
+                    console.log(jsonData);
+            } else if (xhr.readyState === 4) {
+                    console.error("데이터 불러오기 오류: " + xhr.status);
+            }
+    };
+    xhr.send();
+}
+</code></pre>
+                    <p class="desc">
+                        obj1 객체 정의 및 해체:<br>
+                        obj1은 {a: 100, b: 200, c: "javascript"} 객체를 정의합니다.<br>
+                        객체 해체를 사용하여 객체의 속성 a, b, c 값을 각각 변수 a, b, c에 할당하고 출력합니다.<br>
+                        객체 속성을 다른 변수에 할당:<br>
+                        객체 해체를 사용하여 obj1의 속성 a, b, c를 각각 변수 x, y, z에 할당하고 출력합니다.<br>
+                        기본값 설정:<br>
+                        obj4 객체 생성:<br>
+                        obj2는 {d: 100, e: 200, f: "javascript"} 객체를 정의합니다.<br>
+                        객체 해체를 사용하여 obj2의 속성 d, e, f를 추출하고, 속성 g에 기본값 "jquery"를 설정하고 출력합니다.<br>
+                        obj3는 {x1: 100, y1: {a1: 100, b1: 200}, z1: "javascript"} 객체를 정의합니다.<br>
+                        객체 해체를 사용하여 obj3의 속성 x1, y1의 속성 a1, b1, 그리고 속성 z1을 추출하고 출력합니다.<br>
+                        
+                    </p>
+                    <div class="result">
+                        <details>
+                            <summary>결과 확인하기</summary>
+                            <div>
+                                100<br>
+                                200<br>
+                                "javascript"<br>
+                                100<br>
+                                200<br>
+                                "javascript"<br>
+                                "jquery"<br>
+                                100<br>
+                                100<br>
+                                200<br>
+                                "javascript"<br>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <!-- //sample22 -->
+
+                <div id="sample23" class="sample">
+                    <h3> 23. 파일 : 서버 데이터 불러오기 : fetch API</h3>
+                    <p>"서버 데이터 불러오기: Fetch API"는 웹 애플리케이션에서 서버에서 데이터를 가져오는 방법을 다루는 주제입니다. Fetch API는 네트워크 요청을 생성하고 응답을 처리하는 데 사용되는 JavaScript API입니다.</p>
+<pre><code class="language-js">{
+    // 23
+    fetch("https://webstoryboy.github.io/webs2024/json/gineungsaJC2011_05.json")
+        .then(response => {
+            return reponse.json();
+        })
+        .then(data => {
+            console.log(data)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+}
+</code></pre>
+                    <p class="desc">
+                        1.fetch 함수를 사용하여 지정된 URL("https://webstoryboy.github.io/webs2024/json/gineungsaJC2011_05.json")에서 데이터를 가져오려고 합니다.<br>
+
+                        2.then() 메소드를 사용하여 첫 번째 콜백 함수를 정의합니다. 이 콜백 함수는 네트워크 요청의 응답(response)을 받아오고, 이 응답을 JSON 형식으로 파싱하기 위한 코드를 포함하고 있어야 합니다. 그러나 코드에 오타가 있어 return reponse.json();가 아니라 return response.json();로 수정해야 합니다.<br>
+
+                        3.다음 .then() 메소드에서는 JSON 데이터가 파싱된 데이터를 받아와서 이를 콘솔에 출력합니다.<br>
+
+                        4.catch() 메소드를 사용하여 어떠한 오류가 발생한 경우에도 오류 메시지를 콘솔에 출력하도록 핸들링합니다.<br>
+
+                        5.코드의 목적은 주어진 URL에서 JSON 데이터를 가져와서 해당 데이터를 처리하고 콘솔에 출력하는 것입니다. 단, 오타를 수정하여 정상적으로 작동하도록 해야 합니다.<br>
+                    </p>
+                    <div class="result">
+                        <details>
+                            <summary>결과 확인하기</summary>
+                            <div>
+                                이 코드는 주어진 URL에서 JSON 데이터를 가져오고, 해당 데이터를 콘솔에 출력하는 것을 목적으로 합니다. 결과는 해당 URL에서 가져온 JSON 데이터를 파싱하여 출력하게 됩니다.<br>
+                                실제 결과는 JSON 데이터에 따라 다를 것이며, 네트워크 상태에 따라 오류 메시지가 출력될 수도 있습니다.
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <!-- //sample22 -->
         </main>
         <!-- //main -->
         
@@ -1184,6 +1282,37 @@
             console.log(a1);
             console.log(b1);
             console.log(z1); 
+        }
+
+        // 22
+        // var xhr = new XMLHttpRequest();
+        // xhr.open("GET", "https://webstoryboy.github.io/webs2024/json/gineungsaJC2011_05.json", true);
+        
+        // xhr.onreadystatechange = function () {
+        //         if (xhr.readyState === 4 && xhr.status === 200) {
+        //                 var responseData = xhr.responseText;
+        //                 var jsonData = JSON.parse(responseData);
+    
+        //                 console.log(jsonData);
+        //         } else if (xhr.readyState === 4) {
+        //                 console.error("데이터 불러오기 오류: " + xhr.status);
+        //         }
+        // };
+        
+        // xhr.send();
+
+        // 23
+        {
+            fetch("https://webstoryboy.github.io/webs2024/json/gineungsaJC2011_05.json")
+                .then(response => {
+                    return reponse.json();
+                })
+                .then(data => {
+                    console.log(data)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
         }
     </script>
 </body>
